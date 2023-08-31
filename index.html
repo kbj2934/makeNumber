@@ -28,6 +28,27 @@
     
     // 페이지가 로드될 때 이벤트 리스너를 설정
     window.addEventListener("beforeunload", confirmBeforeRefresh);
+
+    var touchStartX = 0;
+    var touchStartY = 0;
+    
+    document.body.addEventListener("touchstart", function(event) {
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+    });
+    
+    document.body.addEventListener("touchmove", function(event) {
+        var touchEndX = event.touches[0].clientX;
+        var touchEndY = event.touches[0].clientY;
+    
+        var distanceX = Math.abs(touchEndX - touchStartX);
+        var distanceY = Math.abs(touchEndY - touchStartY);
+    
+        // 일정 거리 이상 스크롤한 경우 새로고침 확인 창을 띄우지 않음
+        if (distanceY > 10 || distanceX > 10) {
+            window.removeEventListener("beforeunload", confirmBeforeRefresh);
+        }
+    });
     </script>
 </head>
 <body>
