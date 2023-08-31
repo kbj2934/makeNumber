@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .button {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>추첨 번호표 생성기</h1>
+    <input type="number" id="numInput" placeholder="생성하고자 하는 수 입력">
+    <button id="generateButton">생성</button>
+  </div>
+  <div id="buttonContainer"></div>
+
+  <script>
+    const buttonContainer = document.getElementById('buttonContainer');
+    const numInput = document.getElementById('numInput');
+    const generateButton = document.getElementById('generateButton');
+
+    generateButton.addEventListener('click', () => {
+      const numButtons = parseInt(numInput.value);
+      if (!isNaN(numButtons) && numButtons >= 1 && numButtons <= 32) {
+        generateButtons(numButtons);
+      } else {
+        alert('1부터 32 사이의 숫자를 입력해주세요.');
+      }
+    });
+
+    function generateButtons(numButtons) {
+      buttonContainer.innerHTML = '';
+
+      const numbers = Array.from({ length: numButtons }, (_, index) => index + 1);
+      for (let i = numbers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+      }
+
+      numbers.forEach(number => {
+        const button = document.createElement('button');
+        button.className = 'button';
+        button.addEventListener('click', () => {
+          button.textContent = number;
+        });
+        buttonContainer.appendChild(button);
+      });
+    }
+  </script>
+</body>
+</html>
