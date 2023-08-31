@@ -25,10 +25,10 @@
 
     generateButton.addEventListener('click', () => {
       const numButtons = parseInt(numInput.value);
-      if (!isNaN(numButtons) && numButtons >= 1 && numButtons <= 32) {
+      if (!isNaN(numButtons) && numButtons >= 1 && numButtons <= 64) {
         generateButtons(numButtons);
       } else {
-        alert('1부터 32 사이의 숫자를 입력해주세요.');
+        alert('1부터 64 사이의 숫자를 입력해주세요.');
       }
     });
 
