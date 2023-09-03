@@ -5,7 +5,6 @@
 개발 언어는 CSS, HTML, 자바스크립트입니다.
 
 추첨 번호표 생성기 바로가기
-
 https://kbj2934.github.io/makeNumber
 <!--
 ![추첨 번호표 생성기 스크린샷](https://github.com/kbj2934/makeNumber/assets/7522833/82f09ce3-198d-48c7-bf8a-28178c6e64fe)
